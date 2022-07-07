@@ -1,5 +1,4 @@
-﻿using System.Data.Entity.SqlServer;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ProjectMarket.Application.Models;
 
 namespace ProjectMarket.Api.Data
