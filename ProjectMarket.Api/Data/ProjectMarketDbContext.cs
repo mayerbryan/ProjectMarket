@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Data.Entity.SqlServer;
+using Microsoft.EntityFrameworkCore;
 using ProjectMarket.Application.Models;
 
 namespace ProjectMarket.Api.Data
@@ -11,6 +12,8 @@ namespace ProjectMarket.Api.Data
 
         //Models
         public DbSet<UserClientModel> UserClient { get; set; }
+
+
 
     }
 }

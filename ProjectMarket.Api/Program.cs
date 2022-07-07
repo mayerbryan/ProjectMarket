@@ -10,7 +10,14 @@ builder.Services.AddControllersWithViews();
 //var connectionString = builder.Configuration.GetValue<string>(key: "DefaultConnection");
 
 
-builder.Services.AddDbContext<ProjectMarketDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<ProjectMarketDbContext>(options => options.
+UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
+sqlServerOptionsAction: sqlOptions =>
+{
+    sqlOptions.EnableRetryOnFailure(maxRetryCount: 5,
+        maxRetryDelay: TimeSpan.FromSeconds(5),
+        errorNumbersToAdd: null);
+}));
 
 builder.Services.AddDbContext<ProjectMarketDbContext>();
 
