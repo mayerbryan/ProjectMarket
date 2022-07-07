@@ -2,6 +2,16 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProjectMarket.Application\ProjectMarket.Application.csproj" />
+    <ProjectReference Include="..\ProjectMarket.Domain\ProjectMarket.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.6">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.6" />
   </ItemGroup>
 
   <PropertyGroup>

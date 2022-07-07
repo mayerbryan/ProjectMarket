@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ProjectMarket.Application\ProjectMarket.Application.csproj" />
     <ProjectReference Include="..\ProjectMarket.Domain\ProjectMarket.Domain.csproj" />
+    <ProjectReference Include="..\ProjectMarket.Api\ProjectMarket.Api.csproj" />
   </ItemGroup>
 
 </Project>
