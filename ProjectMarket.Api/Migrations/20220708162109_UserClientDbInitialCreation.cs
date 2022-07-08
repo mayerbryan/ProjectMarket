@@ -9,7 +9,7 @@ namespace ProjectMarket.Api.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "UserClient",
+                name: "ProjectMarketDataBase",
                 columns: table => new
                 {
                     SystemId = table.Column<int>(type: "int", nullable: false)

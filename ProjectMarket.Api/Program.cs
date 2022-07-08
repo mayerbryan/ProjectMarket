@@ -24,10 +24,10 @@ if (builder.Environment.IsDevelopment())
     builder.Services.AddDbContext<ProjectMarketDbContext>();
 
 }
-else
+if (builder.Environment.IsProduction())
 {
     builder.Services.AddDbContext<ProjectMarketDbContext>(options => options.
-    UseSqlServer(builder.Configuration.GetConnectionString("AzureConnection"),
+    UseSqlServer(builder.Configuration.GetConnectionString("AzureDataBaseConnectionString"),
     sqlServerOptionsAction: sqlOptions =>
     {
         sqlOptions.EnableRetryOnFailure(maxRetryCount: 5,
@@ -46,12 +46,6 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     DataBaseManagementService.MigrationInitialisation(app);    
-}
-else
-{
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
 }
 
 

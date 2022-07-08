@@ -10,8 +10,6 @@ namespace ProjectMarket.Api.Data.Mappings
         {
             builder.ToTable("UserClient");
 
-            
-
             builder.Property(x => x.SystemId)
                 .ValueGeneratedOnAdd();
 
