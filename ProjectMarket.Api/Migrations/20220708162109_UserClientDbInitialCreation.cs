@@ -4,7 +4,7 @@
 
 namespace ProjectMarket.Api.Migrations
 {
-    public partial class UserClientInitialCreation : Migration
+    public partial class UserClientDbInitialCreation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
