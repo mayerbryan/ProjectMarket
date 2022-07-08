@@ -27,7 +27,7 @@ if (builder.Environment.IsDevelopment())
 if (builder.Environment.IsProduction())
 {
     builder.Services.AddDbContext<ProjectMarketDbContext>(options => options.
-    UseSqlServer(builder.Configuration.GetConnectionString("AzureDataBaseConnectionString"),
+    UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
     sqlServerOptionsAction: sqlOptions =>
     {
         sqlOptions.EnableRetryOnFailure(maxRetryCount: 5,
