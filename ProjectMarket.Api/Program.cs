@@ -8,33 +8,28 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-if (builder.Environment.IsDevelopment())
-{
-    
-    DotNetEnv.Env.Load();
 
-    var connectionString = $"Server={Environment.GetEnvironmentVariable("SERVER")}, " +
-        $"{Environment.GetEnvironmentVariable("DATABASE_PORT")}; " +
-        $"Initial Catalog={Environment.GetEnvironmentVariable("DATABASE_NAME")};" +
-        $"User ID={Environment.GetEnvironmentVariable("DATABASE_USER")}; " +
-        $"Password={Environment.GetEnvironmentVariable("DATABASE_PASSWORD")}";
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<ProjectMarketDbContext>(options => options.UseSqlServer(connectionString));
 
-    builder.Services.AddDbContext<ProjectMarketDbContext>(options => options.UseSqlServer(connectionString));
 
-    builder.Services.AddDbContext<ProjectMarketDbContext>();
+//if (builder.Environment.IsDevelopment())
+//{
 
-}
-if (builder.Environment.IsProduction())
-{
-    builder.Services.AddDbContext<ProjectMarketDbContext>(options => options.
-    UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
-    sqlServerOptionsAction: sqlOptions =>
-    {
-        sqlOptions.EnableRetryOnFailure(maxRetryCount: 5,
-            maxRetryDelay: TimeSpan.FromSeconds(5),
-            errorNumbersToAdd: null);
-    }));
-}
+
+//}
+//if (builder.Environment.IsProduction())
+//{
+//    builder.Services.AddDbContext<ProjectMarketDbContext>(options => options.
+//    UseSqlServer(enderecoconexao,
+//    sqlServerOptionsAction: sqlOptions =>
+//    {
+//        sqlOptions.EnableRetryOnFailure(maxRetryCount: 5,
+//            maxRetryDelay: TimeSpan.FromSeconds(5),
+//            errorNumbersToAdd: null);
+//    }));
+//}
+
 
 
 

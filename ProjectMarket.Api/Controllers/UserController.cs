@@ -5,30 +5,30 @@ using ProjectMarket.Application.Models;
 namespace ProjectMarket.Api.Controllers
 {
     [ApiController]
-    public class UserClientController : ControllerBase 
+    public class UserController : ControllerBase 
     {
         [HttpPost("/v1/new/user")]
         public IActionResult Post(            
-            [FromBody] UserClientModel User,            
+            [FromBody] UserModel User,            
             [FromServices] ProjectMarketDbContext context)
         {
-            context.UserClient.Add(User);
+            context.User.Add(User);
             context.SaveChanges();
             return Created("/{User.Id}", User);
         }
 
         [HttpGet("/v1/users")]
         public IActionResult Get([FromServices] ProjectMarketDbContext context)
-            => Ok(context.UserClient.ToList());
+            => Ok(context.User.ToList());
 
         [HttpPut("/v1/user/{id:int}")]
         public IActionResult Put(
             [FromRoute] int id,
-            [FromBody] UserClientModel User,
+            [FromBody] UserModel User,
             [FromServices] ProjectMarketDbContext context)
         {
 
-            var model = context.UserClient.FirstOrDefault(x => x.SystemId == id);
+            var model = context.User.FirstOrDefault(x => x.SystemId == id);
             if (model == null)
                 return NotFound();
 
@@ -39,7 +39,7 @@ namespace ProjectMarket.Api.Controllers
             model.UserEmail = User.UserEmail;
             model.UserPassword = User.UserPassword;
 
-            context.UserClient.Update(model);
+            context.User.Update(model);
             context.SaveChanges();
             return Ok(model);
         }
@@ -50,11 +50,11 @@ namespace ProjectMarket.Api.Controllers
             [FromServices] ProjectMarketDbContext context)
         {
 
-            var model = context.UserClient.FirstOrDefault(x => x.SystemId == id);
+            var model = context.User.FirstOrDefault(x => x.SystemId == id);
             if (model == null)
                 return NotFound();
 
-            context.UserClient.Remove(model);
+            context.User.Remove(model);
             context.SaveChanges();
             return Ok(model);
         }

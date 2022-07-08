@@ -21,7 +21,7 @@ namespace ProjectMarket.Api.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("ProjectMarket.Application.Models.UserClientModel", b =>
+            modelBuilder.Entity("ProjectMarket.Application.Models.UserModel", b =>
                 {
                     b.Property<int>("SystemId")
                         .ValueGeneratedOnAdd()
@@ -53,7 +53,7 @@ namespace ProjectMarket.Api.Migrations
 
                     b.HasKey("SystemId");
 
-                    b.ToTable("UserClient");
+                    b.ToTable("User");
                 });
 #pragma warning restore 612, 618
         }

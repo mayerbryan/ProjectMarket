@@ -3,7 +3,7 @@
 
 namespace ProjectMarket.Application.Models
 {
-    public class UserClientModel
+    public class UserModel
     {
         [Key]
         public int SystemId { get; set; }

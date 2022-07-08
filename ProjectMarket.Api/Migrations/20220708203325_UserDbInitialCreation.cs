@@ -4,12 +4,12 @@
 
 namespace ProjectMarket.Api.Migrations
 {
-    public partial class UserClientDbInitialCreation : Migration
+    public partial class UserDbInitialCreation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "ProjectMarketDataBase",
+                name: "User",
                 columns: table => new
                 {
                     SystemId = table.Column<int>(type: "int", nullable: false)
@@ -23,14 +23,14 @@ namespace ProjectMarket.Api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserClient", x => x.SystemId);
+                    table.PrimaryKey("PK_User", x => x.SystemId);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "UserClient");
+                name: "User");
         }
     }
 }
