@@ -4,9 +4,9 @@ using ProjectMarket.Application.Models;
 
 namespace ProjectMarket.Api.Data.Mappings
 {
-    public class UserClientMap : IEntityTypeConfiguration<UserClientModel>
+    public class UserMap : IEntityTypeConfiguration<UserModel>
     {
-        public void Configure(EntityTypeBuilder<UserClientModel> builder)
+        public void Configure(EntityTypeBuilder<UserModel> builder)
         {
             builder.ToTable("UserClient");
 

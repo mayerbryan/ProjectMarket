@@ -10,7 +10,7 @@ namespace ProjectMarket.Api.Data
 
 
         //Models
-        public DbSet<UserClientModel> UserClient { get; set; }
+        public DbSet<UserModel> User { get; set; }
 
 
 
