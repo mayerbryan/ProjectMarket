@@ -10,44 +10,44 @@ namespace ProjectMarket.Api.Data.Mappings
         {
             builder.ToTable("UserClient");
 
-            builder.HasKey(x => x.SystemId);
+            
 
             builder.Property(x => x.SystemId)
                 .ValueGeneratedOnAdd();
 
             builder.Property(x => x.UserName)
                 .IsRequired()
-                .HasColumnName("UserClientName")
+                .HasColumnName("UserName")
                 .HasColumnType("text")
                 .HasMaxLength(50);
 
             builder.Property(x => x.UserAddress)
                 .IsRequired()
-                .HasColumnName("UserClientAddress")
+                .HasColumnName("UserAddress")
                 .HasColumnType("text")
                 .HasMaxLength(80);
 
             builder.Property(x => x.UserPhone)
                 .IsRequired()
-                .HasColumnName("UserClientPhone")
+                .HasColumnName("UserPhone")
                 .HasColumnType("integer")
                 .HasMaxLength(15);
 
             builder.Property(x => x.UserId)
                 .IsRequired()
-                .HasColumnName("UserClientId")
+                .HasColumnName("UserId")
                 .HasColumnType("integer")
                 .HasMaxLength(15);
 
             builder.Property(x => x.UserEmail)
                 .IsRequired()
-                .HasColumnName("UserClientEmail")
+                .HasColumnName("UserEmail")
                 .HasColumnType("text")
                 .HasMaxLength(30);
 
             builder.Property(x => x.UserPassword)
                 .IsRequired()
-                .HasColumnName("UserClientPassword")
+                .HasColumnName("UserPassword")
                 .HasColumnType("nvarchar")
                 .HasMaxLength(50);
 

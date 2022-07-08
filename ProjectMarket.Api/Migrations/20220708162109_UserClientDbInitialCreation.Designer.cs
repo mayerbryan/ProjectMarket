@@ -11,8 +11,8 @@ using ProjectMarket.Api.Data;
 namespace ProjectMarket.Api.Migrations
 {
     [DbContext(typeof(ProjectMarketDbContext))]
-    [Migration("20220707200949_UserClientInitialCreation")]
-    partial class UserClientInitialCreation
+    [Migration("20220708162109_UserClientDbInitialCreation")]
+    partial class UserClientDbInitialCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

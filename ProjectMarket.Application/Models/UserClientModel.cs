@@ -6,12 +6,13 @@ namespace ProjectMarket.Application.Models
     public class UserClientModel
     {
         [Key]
-        public int SystemId { get; private set; }
-        public string UserName { get; private set; }        
-        public string UserAddress { get; private set; }
-        public int UserPhone { get; private set; }
-        public int UserId { get; private set; }
-        public string UserEmail { get; private set; }
-        public string UserPassword { get; private set; }
+        public int SystemId { get; set; }
+        public string UserName { get; set; }        
+        public string UserAddress { get; set; }
+        public int UserPhone { get; set; }
+        public int UserId { get; set; }
+        public string UserEmail { get; set; }
+        public string UserPassword { get; set; }
+       
     }
 }
