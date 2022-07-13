@@ -1,5 +1,6 @@
 ﻿using Flunt.Notifications;
 using Microsoft.EntityFrameworkCore;
+using ProjectMarket.Api.Data.Mappings;
 using ProjectMarket.Application.Models;
 
 namespace ProjectMarket.Api.Data
@@ -11,6 +12,7 @@ namespace ProjectMarket.Api.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new UserMap());
             modelBuilder.Ignore<Notification>();
         }
 

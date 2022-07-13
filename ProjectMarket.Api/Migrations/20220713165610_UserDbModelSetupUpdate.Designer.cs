@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjectMarket.Api.Data;
 
@@ -10,9 +11,10 @@ using ProjectMarket.Api.Data;
 namespace ProjectMarket.Api.Migrations
 {
     [DbContext(typeof(ProjectMarketDbContext))]
-    partial class ProjectMarketDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220713165610_UserDbModelSetupUpdate")]
+    partial class UserDbModelSetupUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
