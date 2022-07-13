@@ -16,31 +16,31 @@ namespace ProjectMarket.Api.Data.Mappings
             builder.Property(x => x.UserName)
                 .IsRequired()
                 .HasColumnName("UserName")
-                .HasColumnType("text")
+                .HasColumnType("nvarchar")
                 .HasMaxLength(50);
 
             builder.Property(x => x.UserAddress)
                 .IsRequired()
                 .HasColumnName("UserAddress")
-                .HasColumnType("text")
+                .HasColumnType("nvarchar")
                 .HasMaxLength(80);
 
             builder.Property(x => x.UserPhone)
                 .IsRequired()
                 .HasColumnName("UserPhone")
-                .HasColumnType("integer")
+                .HasColumnType("int")
                 .HasMaxLength(15);
 
             builder.Property(x => x.UserId)
                 .IsRequired()
                 .HasColumnName("UserId")
-                .HasColumnType("integer")
+                .HasColumnType("int")
                 .HasMaxLength(15);
 
             builder.Property(x => x.UserEmail)
                 .IsRequired()
                 .HasColumnName("UserEmail")
-                .HasColumnType("text")
+                .HasColumnType("nvarchar")
                 .HasMaxLength(30);
 
             builder.Property(x => x.UserPassword)
@@ -52,5 +52,7 @@ namespace ProjectMarket.Api.Data.Mappings
 
        
         }
+
+
     }
 }
