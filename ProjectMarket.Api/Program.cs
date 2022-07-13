@@ -10,28 +10,10 @@ builder.Services.AddControllersWithViews();
 
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ProjectMarketDbContext>(options => options.UseSqlServer(connectionString));
-
-
-//if (builder.Environment.IsDevelopment())
-//{
-
-
-//}
-//if (builder.Environment.IsProduction())
-//{
-//    builder.Services.AddDbContext<ProjectMarketDbContext>(options => options.
-//    UseSqlServer(enderecoconexao,
-//    sqlServerOptionsAction: sqlOptions =>
-//    {
-//        sqlOptions.EnableRetryOnFailure(maxRetryCount: 5,
-//            maxRetryDelay: TimeSpan.FromSeconds(5),
-//            errorNumbersToAdd: null);
-//    }));
-//}
-
-
-
+builder.Services.AddDbContext<ProjectMarketDbContext>(options => options.UseSqlServer(connectionString, builder =>
+{
+    builder.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
+}));
 
 
 
