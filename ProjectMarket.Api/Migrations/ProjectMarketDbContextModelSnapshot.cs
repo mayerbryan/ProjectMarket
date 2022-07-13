@@ -65,7 +65,7 @@ namespace ProjectMarket.Api.Migrations
 
                     b.HasKey("SystemId");
 
-                    b.ToTable("UserClient", (string)null);
+                    b.ToTable("User", (string)null);
                 });
 #pragma warning restore 612, 618
         }

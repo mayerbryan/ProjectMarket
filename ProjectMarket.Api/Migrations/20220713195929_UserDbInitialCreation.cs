@@ -14,12 +14,12 @@ namespace ProjectMarket.Api.Migrations
                 {
                     SystemId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserPhone = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    UserEmail = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserPassword = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    UserName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    UserAddress = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: false),
+                    UserPhone = table.Column<int>(type: "int", maxLength: 15, nullable: false),
+                    UserId = table.Column<int>(type: "int", maxLength: 15, nullable: false),
+                    UserEmail = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    UserPassword = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
