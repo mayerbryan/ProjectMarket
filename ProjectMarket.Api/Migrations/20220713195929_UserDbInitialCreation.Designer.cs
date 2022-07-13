@@ -11,8 +11,8 @@ using ProjectMarket.Api.Data;
 namespace ProjectMarket.Api.Migrations
 {
     [DbContext(typeof(ProjectMarketDbContext))]
-    [Migration("20220713165610_UserDbModelSetupUpdate")]
-    partial class UserDbModelSetupUpdate
+    [Migration("20220713195929_UserDbInitialCreation")]
+    partial class UserDbInitialCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -67,7 +67,7 @@ namespace ProjectMarket.Api.Migrations
 
                     b.HasKey("SystemId");
 
-                    b.ToTable("UserClient", (string)null);
+                    b.ToTable("User", (string)null);
                 });
 #pragma warning restore 612, 618
         }

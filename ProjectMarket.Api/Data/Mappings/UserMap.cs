@@ -8,7 +8,7 @@ namespace ProjectMarket.Api.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<UserModel> builder)
         {
-            builder.ToTable("UserClient");
+            builder.ToTable("User");
 
             builder.Property(x => x.SystemId)
                 .ValueGeneratedOnAdd();
