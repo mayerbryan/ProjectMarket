@@ -1,4 +1,4 @@
-﻿using Flunt.Notifications;
+using Flunt.Notifications;
 using Flunt.Validations;
 using System.ComponentModel.DataAnnotations;
 
@@ -12,12 +12,12 @@ namespace ProjectMarket.Application.Models
         public int SystemId { get; set; }
         public string UserName { get; set; }        
         public string UserAddress { get; set; }
-        public int UserPhone { get; set; }
-        public int UserId { get; set; }
+        public string UserPhone { get; set; }
+        public string UserId { get; set; }
         public string UserEmail { get; set; }
         public string UserPassword { get; set; }
 
-        public UserModel(int systemId, string userName, string userAddress, int userPhone, int userId, string userEmail, string userPassword)
+        public UserModel(int systemId, string userName, string userAddress, string userPhone, string userId, string userEmail, string userPassword)
         {
             SystemId = systemId;
             UserName = userName;
@@ -40,28 +40,27 @@ namespace ProjectMarket.Application.Models
             );
 
             AddNotifications(new Contract<Notification>()
-                .AreNotEquals(UserPhone, 0, "UserPhone") // I dont think this is working.
-                .IsGreaterOrEqualsThan(UserPhone.ToString(), 10, "UserPhone", "User phone invalid number ") //  10 digits with DDD + number or 11 digits with DDD + cel number
+                .IsNotNullOrEmpty(UserPhone, "UserPhone")
+                .IsGreaterThan(UserPhone, 2, "UserPhone", "User Phone is too short")
+                .IsLowerThan(UserPhone, 80, "UserPhone", "User Phone is too long")
             );
 
             AddNotifications(new Contract<Notification>()
-                .AreNotEquals(UserId, 0, "UserId") // I dont think this is working.
+                .IsNotNullOrEmpty(UserId, "UserId")
             );
 
             AddNotifications(new Contract<Notification>()
                 .IsNotNullOrEmpty(UserEmail, "UserEmail")
                 .IsEmail(UserEmail, "Please enter a valid e-mail adress")
-                //.IsLowerThan(UserEmail, 30, "UserEmail", "User e-mail is too long") // Just IsEmail should be enough
+                
             );
 
             AddNotifications(new Contract<Notification>()
                 .IsNotNullOrEmpty(UserPassword, "UserPassword")
-                .IsGreaterThan(UserPassword, 7, "UserPassword", "User Password is too short") // Min of 8 chars for secure password. Consider hashing before saving to db
+                .IsGreaterThan(UserPassword, 8, "UserPassword", "User Password is too short") 
             );
-
         }
-    }
 
-   
+    }   
     
 }

@@ -1,6 +1,11 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using ProjectMarket.Api;
 using ProjectMarket.Api.Data;
+using ProjectMarket.Api.Services;
+using System.Text;
 using WebApiTemplate.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,11 +14,32 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 
+builder.Services.AddTransient<TokenService>();
+
+var key = Encoding.ASCII.GetBytes(Configuration.JwtKey);
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(x =>
+{
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+}
+);
+
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ProjectMarketDbContext>(options => options.UseSqlServer(connectionString, builder =>
 {
     builder.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
 }));
+
+
 
 
 
@@ -32,6 +58,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+//app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
