@@ -16,7 +16,7 @@ namespace ProjectMarket.Api.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.6")
+                .HasAnnotation("ProductVersion", "6.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -41,9 +41,10 @@ namespace ProjectMarket.Api.Migrations
                         .HasColumnType("nvarchar(30)")
                         .HasColumnName("UserEmail");
 
-                    b.Property<int>("UserId")
+                    b.Property<string>("UserId")
+                        .IsRequired()
                         .HasMaxLength(15)
-                        .HasColumnType("int")
+                        .HasColumnType("varchar(15)")
                         .HasColumnName("UserId");
 
                     b.Property<string>("UserName")
@@ -54,13 +55,14 @@ namespace ProjectMarket.Api.Migrations
 
                     b.Property<string>("UserPassword")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)")
                         .HasColumnName("UserPassword");
 
-                    b.Property<int>("UserPhone")
-                        .HasMaxLength(15)
-                        .HasColumnType("int")
+                    b.Property<string>("UserPhone")
+                        .IsRequired()
+                        .HasMaxLength(11)
+                        .HasColumnType("varchar(11)")
                         .HasColumnName("UserPhone");
 
                     b.HasKey("SystemId");

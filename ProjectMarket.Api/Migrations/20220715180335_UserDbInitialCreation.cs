@@ -16,10 +16,10 @@ namespace ProjectMarket.Api.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     UserAddress = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: false),
-                    UserPhone = table.Column<int>(type: "int", maxLength: 15, nullable: false),
-                    UserId = table.Column<int>(type: "int", maxLength: 15, nullable: false),
+                    UserPhone = table.Column<string>(type: "varchar(11)", maxLength: 11, nullable: false),
+                    UserId = table.Column<string>(type: "varchar(15)", maxLength: 15, nullable: false),
                     UserEmail = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    UserPassword = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                    UserPassword = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
                 },
                 constraints: table =>
                 {
