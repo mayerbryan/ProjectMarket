@@ -14,8 +14,6 @@ namespace ProjectMarket.Api.Controllers
             [FromBody] UserModel User,
             [FromServices] ProjectMarketDbContext context)
         {
-             
-            
             if (User.IsValid)
             {
                 context.User.Add(User);

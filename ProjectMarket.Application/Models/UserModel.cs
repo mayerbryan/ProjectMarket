@@ -28,18 +28,32 @@ namespace ProjectMarket.Application.Models
             UserPassword = userPassword;
 
             AddNotifications(new Contract<Notification>()
-                .IsLowerThan(UserName, 50, "UserName", "User Name is too long")
                 .IsGreaterThan(UserName, 2, "UserName", "User Name is too short")
-                .IsLowerThan(UserName, 80, "UserAddress", "User Address is too long")
+                .IsLowerThan(UserName, 50, "UserName", "User Name is too long")
+            );
+
+            AddNotifications(new Contract<Notification>()
                 .IsGreaterThan(UserAddress, 2, "UserAddress", "User Address is too short")
-                .IsGreaterThan(UserPhone, 2, "UserPhone", "User Phone is too short")
-                .IsGreaterThan(UserId, 2, "UserId", "User ID is too short")
+                .IsLowerThan(UserAddress, 80, "UserAddress", "User Address is too long")
+            );
+
+            AddNotifications(new Contract<Notification>()
+                .IsNotNullOrEmpty(UserPhone.ToString(), "UserPhone", "User phone cannot be empty") // Add a better validation for phone number
+            );
+
+            AddNotifications(new Contract<Notification>()
+                .IsNotNullOrEmpty(UserId.ToString(), "UserId", "User ID cannot be empty")
+            );
+
+            AddNotifications(new Contract<Notification>()
                 .IsEmail(UserEmail, "Please enter a valid e-mail adress")
-                .IsLowerThan(UserEmail, 30, "UserEmail", "User e-mail is too long")
-                .IsGreaterThan(UserPassword, 2, "UserPassword", "User Password is too short")
-                .IsLowerThan(UserPassword, 50, "UserPassword", "User Password is too long")
-                );         
-            
+                //.IsLowerThan(UserEmail, 30, "UserEmail", "User e-mail is too long") // Just IsEmail should be enough
+            );
+
+            AddNotifications(new Contract<Notification>()
+                .IsGreaterThan(UserPassword, 7, "UserPassword", "User Password is too short") // Min of 8 chars for secure password. Consider hashing before saving to db
+            );
+
         }
     }
 
