@@ -1,4 +1,4 @@
-﻿using Flunt.Notifications;
+using Flunt.Notifications;
 using Flunt.Validations;
 using System.ComponentModel.DataAnnotations;
 
@@ -22,10 +22,10 @@ namespace ProjectMarket.Application.Models
             SystemId = systemId;
             UserName = userName;
             UserAddress = userAddress;
-            UserPhone = userPhone;
-            UserId = userId;
             UserEmail = userEmail;
             UserPassword = userPassword;
+            UserPhone = userPhone;
+            UserId = userId;
 
             AddNotifications(new Contract<Notification>()
                 .IsNotNullOrEmpty(UserName, "UserName")
@@ -58,8 +58,7 @@ namespace ProjectMarket.Application.Models
             AddNotifications(new Contract<Notification>()
                 .IsNotNullOrEmpty(UserPassword, "UserPassword")
                 .IsGreaterThan(UserPassword, 8, "UserPassword", "User Password is too short") 
-            );      
-            
+            );
         }
 
     }   

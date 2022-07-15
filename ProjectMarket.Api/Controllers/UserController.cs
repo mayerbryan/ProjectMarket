@@ -10,7 +10,6 @@ namespace ProjectMarket.Api.Controllers
     [ApiController]
     public class UserController : ControllerBase 
     {
-
         //[HttpPost("/v1/new/user")]
         //public IActionResult Post(
         //    [FromBody] UserModel User,
