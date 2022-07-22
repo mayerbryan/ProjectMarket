@@ -40,3 +40,6 @@ and finally we need to enter in each folder to make the relations to the other f
 ```
 dotnet add reference {folder path}
 ```
+
+
+
