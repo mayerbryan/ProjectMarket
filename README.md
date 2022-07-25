@@ -43,11 +43,11 @@ dotnet add reference {folder path}
 
 ## creating the DataBase
 
-to create the database that we will use inside the docker container (that we did in the previous step) we will use the 
-concept of "code first" and "fluent mapping" we code the database structure on visual studio and then use the entity 
-framework to create the database for us using the migration files. Entity Framework is package with isntructions 
-and commands made by Microsoft will translte our C# code to and SQL code and make a migration file so we can apply 
-this code inside our database.
+to create the database that we will use inside the docker container we will use the concept of "code first"
+and "fluent mapping" we code the database structure on visual studio and then use the entity concept of "code first"
+x create the database for us using the migration files. Entity Framework is package with isntructions and commands
+ made by Microsoft will translte our C# code to and SQL code and make a migration file so we can apply this code 
+inside our database.
 
 that is why the entity framework is called an object relational mapping (ORM) because make the relation between 
 or C# code and the SQL database code.
